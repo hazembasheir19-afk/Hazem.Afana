@@ -3,121 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hazem Afana - CV</title>
+    <title>Hazem Afana - Professional CV</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
+        :root {
+            --primary: #1a5f7a;
+            --primary-dark: #134b61;
+            --accent: #159895;
+            --text: #2d3748;
+            --text-light: #4a5568;
+            --border: #e2e8f0;
+            --bg-light: #f7fafc;
         }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #edf2f7;
+            color: var(--text);
+            line-height: 1.65;
+            padding: 30px 15px;
+        }
+
         .container {
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 0 auto;
             background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 45px 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
+
+        /* Header */
         header {
             display: flex;
             align-items: center;
-            gap: 30px;
-            border-bottom: 3px solid #2c7a7b;
-            padding-bottom: 25px;
-            margin-bottom: 35px;
+            gap: 35px;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 28px;
+            margin-bottom: 40px;
             position: relative;
         }
+
         .photo {
-            width: 160px;
-            height: 160px;
+            width: 155px;
+            height: 155px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #2c7a7b;
+            border: 5px solid var(--primary);
             flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(26, 95, 122, 0.2);
         }
+
         .download-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #2c7a7b;
+            top: 0;
+            right: 0;
+            background: var(--primary);
             color: white;
-            padding: 10px 20px;
+            padding: 11px 22px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(26, 95, 122, 0.25);
         }
-        .download-btn:hover { background: #234f50; }
-        h1 { margin: 0; color: #2c7a7b; font-size: 2.3em; }
-        .title { font-size: 1.15em; margin: 8px 0; color: #444; }
-        .contact { margin: 8px 0; font-size: 1.05em; }
-        .contact a { color: #2c7a7b; text-decoration: none; }
-        .contact a:hover { text-decoration: underline; }
-        h2 { color: #2c7a7b; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-top: 0; }
-        .section { margin-bottom: 35px; }
-        .job { margin-bottom: 25px; }
-        .job-title { font-weight: bold; color: #2c7a7b; font-size: 1.1em; }
-        .job-meta { color: #555; margin: 4px 0 10px 0; }
-        ul { padding-left: 22px; margin: 8px 0; }
+
+        .download-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        h1 {
+            margin: 0 0 6px 0;
+            color: var(--primary);
+            font-size: 2.4em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .title {
+            font-size: 1.15em;
+            color: var(--text-light);
+            margin: 4px 0;
+            font-weight: 500;
+        }
+
+        .title.certs {
+            color: var(--accent);
+            font-size: 1.05em;
+            margin-top: 6px;
+        }
+
+        .contact {
+            margin-top: 12px;
+            font-size: 1.02em;
+            color: var(--text-light);
+        }
+
+        .contact a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 38px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.35em;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        /* Summary */
+        .summary p {
+            font-size: 1.05em;
+            color: var(--text);
+            text-align: justify;
+        }
+
+        /* Competencies */
         .competencies {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px 30px;
+            gap: 22px 40px;
         }
-        .competencies div { margin-bottom: 4px; }
+
+        .comp-item strong {
+            display: block;
+            color: var(--primary);
+            font-size: 1.05em;
+            margin-bottom: 6px;
+        }
+
+        .comp-item {
+            font-size: 0.98em;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Certificates */
         .certificates {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 22px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
+
         .cert {
-            border: 1px solid #e2e8f0;
-            padding: 18px;
-            border-radius: 10px;
+            border: 1px solid var(--border);
+            padding: 18px 14px;
+            border-radius: 12px;
             text-align: center;
-            background: #fafafa;
+            background: var(--bg-light);
+            transition: all 0.2s ease;
         }
+
+        .cert:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
         .cert img {
             width: 100%;
-            max-width: 210px;
+            max-width: 180px;
             height: auto;
             border-radius: 8px;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
+
+        .cert strong {
+            display: block;
+            font-size: 0.95em;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .cert span {
+            font-size: 0.85em;
+            color: var(--text-light);
+        }
+
+        /* Experience */
+        .job {
+            margin-bottom: 28px;
+            padding-bottom: 8px;
+        }
+
+        .job-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.15em;
+            margin-bottom: 3px;
+        }
+
+        .job-meta {
+            color: var(--text-light);
+            font-size: 0.98em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .job ul {
+            padding-left: 22px;
+            margin: 0;
+        }
+
+        .job li {
+            margin-bottom: 7px;
+            color: var(--text);
+        }
+
+        .job ul ul {
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+
+        /* Education & Languages */
+        .edu-item, .lang-item {
+            margin-bottom: 12px;
+        }
+
+        .edu-item strong, .lang-item strong {
+            color: var(--primary);
+        }
+
+        /* Skills */
         .toolkit {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px 25px;
+            gap: 14px 35px;
         }
+
+        .toolkit-item strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .toolkit-item {
+            font-size: 0.98em;
+            color: var(--text-light);
+        }
+
+        /* Print */
         @media print {
-            body { background: white; padding: 0; }
-            .container { box-shadow: none; border-radius: 0; padding: 25px; }
-            .download-btn { display: none; }
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 20px;
+                max-width: 100%;
+            }
+            .download-btn {
+                display: none;
+            }
+            .cert:hover {
+                transform: none;
+                box-shadow: none;
+            }
         }
+
+        /* Mobile */
         @media (max-width: 768px) {
-            header { flex-direction: column; text-align: center; }
-            .photo { margin-bottom: 15px; }
-            .competencies, .toolkit { grid-template-columns: 1fr; }
-            .download-btn { position: static; margin-bottom: 15px; }
+            .container {
+                padding: 30px 22px;
+            }
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .photo {
+                margin: 0 auto;
+            }
+            .download-btn {
+                position: static;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+            .competencies, .toolkit {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2em;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <button class="download-btn" onclick="window.print()">📄 Download PDF</button>
+            <button class="download-btn" onclick="window.print()">Download PDF</button>
             
-            <!-- Change to your photo filename -->
+            <!-- Replace with your photo -->
             <img src="photo.jpg" alt="Hazem Afana" class="photo">
             
             <div>
                 <h1>Hazem Afana</h1>
-                <div class="title">Civil Engineer | Digital Master of MBA in AI </div>
-               <div class="title">  PMP® | MEAL DPro® | Social Good DPro® | PMD Pro® </div>
+                <div class="title">Civil Engineer | Project Manager | MBA in Artificial Intelligence</div>
+                <div class="title certs">PMP® | MEAL DPro® | Social Good DPro® | Project DPro®</div>
                 <div class="contact">
                     Palestine | +970 599 498 524 | h.afana@mail.ru<br>
                     <a href="https://www.linkedin.com/in/hazem-afana-a377b8387/" target="_blank">linkedin.com/in/hazem-afana-a377b8387</a>
@@ -125,117 +330,138 @@
             </div>
         </header>
 
-        <div class="section">
+        <!-- Professional Summary -->
+        <div class="section summary">
             <h2>Professional Summary</h2>
-            <p>(Buisness developer intelligence) Results-oriented Project Management Professional with over 16 years of experience bridging large-scale civil engineering. Proactively managed diverse portfolios of construction, shelter, and infrastructure projects. A PMP® certified leader with specialized training in PMD Pro® and Social Good DPro®, demonstrating a deep commitment to the humanitarian sector’s standards of accountability, participation, and sustainable development. Expertise in WASH-related infrastructure, emergency response, and stakeholder engagement in complex environments, including Palestine and the UAE. Dedicated to ensuring project quality, managing risk, and delivering measurable impact for vulnerable populations and marganalized communities.</p>
+            <p>Results-driven Project Manager and Civil Engineer with 16 years of progressive experience delivering construction, infrastructure, shelter, and WASH-related projects across Palestine and the UAE. Currently leading a $9 million luxury hotel development in Bethlehem while managing multi-disciplinary teams and complex stakeholder environments. PMP® certified with specialized humanitarian credentials (MEAL DPro®, Social Good DPro®, PMD Pro®). Strong business acumen and business development intelligence, combined with growing expertise in AI applications for project management and data-driven decision making. Proven ability to deliver high-quality projects on time and within budget under challenging conditions.</p>
         </div>
 
+        <!-- Core Competencies -->
         <div class="section">
             <h2>Core Competencies</h2>
             <div class="competencies">
-                <div><strong>Project Management</strong><br>
-                    Project Life Cycle Management • Risk Analysis & Mitigation • Budget & Schedule Management • Team Leadership & Mentoring • Stakeholder Engagement</div>
-                <div><strong>Humanitarian & MEAL</strong><br>
-                    Needs Assessment & Analysis • Monitoring, Evaluation & Learning (MEAL) • Accountability & Transparency • Emergency Relief Coordination • Community Participation</div>
-                <div><strong>Technical & Analytical</strong><br>
-                    Civil Engineering & Site Planning • Data Collection & Analysis • Health & Safety Compliance • Logistics & Supply Chain • Business Intelligence & AI</div>
+                <div class="comp-item">
+                    <strong>Technical Civil Engineering</strong>
+                    Site Planning & Layout • Construction & Site Supervision • International Health & Safety Compliance • Quantity Surveying & BOQ Preparation • Infrastructure & Road Works • Residential, Commercial & Educational Buildings • Quality Control & Assurance • Surveying & Shop Drawings Review • Structural Analysis Software (PROKON, ETABS, SAFE)
+                </div>
+                <div class="comp-item">
+                    <strong>Project Management</strong>
+                    Full Project Lifecycle Management • Budget & Cost Control • Schedule Management • Risk Analysis & Mitigation • Stakeholder & Owner Management • Client Communication & Meetings • Negotiation & Deal Management • Team Leadership & Coordination • Quality Management • Contract & Subcontractor Management
+                </div>
+                <div class="comp-item">
+                    <strong>Humanitarian & Development</strong>
+                    Shelter Rehabilitation & Reconstruction • WASH-related Infrastructure • MEAL (Monitoring, Evaluation, Accountability & Learning) • Theory of Change & Logical Frameworks • Results Frameworks • Accountability to Affected Populations • Community Participation • Social Good Project Approaches
+                </div>
+                <div class="comp-item">
+                    <strong>Business & Analytical Skills</strong>
+                    Business Acumen • Business Development Intelligence • Strategic Business Management • Business Performance Management • Business Intelligence Fundamentals • Data Analysis (Excel) • AI Applications in Project Management • Machine Learning Fundamentals
+                </div>
             </div>
         </div>
 
+        <!-- Certifications -->
         <div class="section">
             <h2>Professional Certifications</h2>
             <div class="certificates">
                 <div class="cert">
                     <img src="photopmp.jpg" alt="PMP Certificate">
-                    <strong>PMP® (Project Management Professional)</strong><br>
-                    Project Management Institute (PMI)
+                    <strong>PMP®</strong>
+                    <span>Project Management Institute (PMI)</span>
                 </div>
                 <div class="cert">
-                    <img src="photomeal.jpg" alt="MEAL DPro Certificate">
-                    <strong>MEAL DPro®</strong><br>
-                    PM4NGOs
+                    <img src="photomeal.jpg" alt="MEAL DPro">
+                    <strong>MEAL DPro®</strong>
+                    <span>PM4NGOs</span>
                 </div>
                 <div class="cert">
-                    <img src="photosocial.jpg" alt="Social Good DPro Certificate">
-                    <strong>Social Good DPro®</strong><br>
-                    PM4NGOs
+                    <img src="photosocial.jpg" alt="Social Good DPro">
+                    <strong>Social Good DPro®</strong>
+                    <span>PM4NGOs</span>
                 </div>
                 <div class="cert">
-                    <img src="photodpro.jpg" alt="PMD Pro Certificate">
-                    <strong>PMD Pro (Project DPro®)</strong><br>
-                    PM4NGOs
-                </div>
-                
-                <div class="cert">
-                    <img src="photohumanitarian.jpg" alt="Core Humanitarian Essentials">
-                    <strong>Core Humanitarian Essentials (CHE)</strong><br>
+                    <img src="photodpro.jpg" alt="Project DPro">
+                    <strong>Project DPro® (PMD Pro®)</strong>
+                    <span>PM4NGOs</span>
                 </div>
                 <div class="cert">
-                    <img src="photowash.jpg" alt="(TPM) in WASH emergencies">
-                    <strong>(TPM) in WASH emergencies</strong><br>
+                    <img src="photohumanitarian.jpg" alt="CHE">
+                    <strong>Core Humanitarian Essentials</strong>
+                    <span>(CHE)</span>
+                </div>
+                <div class="cert">
+                    <img src="photowash.jpg" alt="WASH">
+                    <strong>TPM in WASH Emergencies</strong>
+                </div>
+                <div class="cert">
+                    <img src="photoai.jpg" alt="AI in PM">
+                    <strong>AI in Project Management</strong>
+                    <span>Alison</span>
                 </div>
             </div>
         </div>
 
+        <!-- Experience -->
         <div class="section">
             <h2>Professional Experience</h2>
 
             <div class="job">
                 <div class="job-title">Project Manager</div>
-                <div class="job-meta">Sakakini & Partners Consultant Office | Bethlehem, Palestine | 2022</div>
+                <div class="job-meta">Sakakini & Partners Consultant Office | Bethlehem, Palestine | December 2022 – Present</div>
                 <ul>
-                    <li>Spearheaded the Bethlehem Hotel Project (9,737 m² High-Rise), managing all phases from planning to delivery, ensuring alignment with client requirements and international quality standards.</li>
-                    <li>Oversaw a multi-stakeholder environment, coordinating with local authorities, subcontractors, and international partners.</li>
-                    <li>Conducted comprehensive risk analysis and implemented mitigation strategies, ensuring project milestones were met on time and within budget.</li>
+                    <li>Direct the full lifecycle of the Bethlehem Hotel Project (9,737 m²), a $9 million luxury development recognized as one of the premier hotels in the West Bank.</li>
+                    <li>Lead and align multi-disciplinary teams across consultant and contractor sides to consistently deliver on schedule, quality, and budget targets.</li>
+                    <li>Concurrently oversee a portfolio of smaller internal projects while maintaining rigorous control over cost, quality, and timelines.</li>
+                    <li>Manage high-level owner communications, negotiations, stakeholder relations, and critical on-site decision-making.</li>
                 </ul>
             </div>
 
             <div class="job">
-                <div class="job-title">Civil Engineer </div>
+                <div class="job-title">Civil Engineer</div>
                 <div class="job-meta">Fast Building for Contractors | Sharjah, UAE | 2019 – 2022</div>
                 <ul>
-                    <li>Managed the execution of multiple large-scale construction and infrastructure projects, demonstrating robust capability in WASH-related infrastructure (water, sanitation, shelter).</li>
-                    <li><strong>Kalba Kornich Project (12,000 m²)</strong>: Led the construction of 16 condominiums, managing a significant budget, site teams, and logistical planning to ensure timely delivery.</li>
-                    <li><strong>Victoria International School Project (19,000 m²)</strong>: Coordinated the first phase of construction, effectively managing scope and schedule in a complex, high-stakes project.</li>
-                    <li><strong>Masid Jaber (500 m²)</strong>: Oversaw the full project lifecycle, focusing on team performance, quality assurance, and stakeholder reporting.</li>
+                    <li>Executed large-scale construction and infrastructure projects in a demanding contractor environment, leading teams of up to 19 engineers and 300 labourers.</li>
+                    <li>Played a key role in the successful delivery of major developments, including:
+                        <ul>
+                            <li>Kalba Kornich Project (12,000 m²) – 16 condominiums</li>
+                            <li>Victoria International School (19,000 m²) – First phase coordination and execution</li>
+                            <li>Masid Jaber Project (500 m²) – Complete project lifecycle management</li>
+                        </ul>
+                    </li>
+                    <li>Drove quality assurance, schedule compliance, and seamless coordination with consultants and clients.</li>
                 </ul>
             </div>
 
             <div class="job">
-                <div class="job-title">Key Contributions in Humanitarian & Relief Projects</div>
+                <div class="job-title">Supervisor Civil Engineer</div>
+                <div class="job-meta">Anas Hodaly Consultant Office | Palestine | 2016 – 2019</div>
                 <ul>
-                    <li><strong>Ayed Basheeti St.</strong>: 1,000 m asphalt road with infrastructure, funded by Qatar.</li>
-                    <li><strong>Qalandia 7 Shelters Reconstruction</strong>: Funded by Saudi Arabia. Contributed to shelter and infrastructure reconstruction for vulnerable populations, demonstrating commitment to humanitarian standards and community needs.</li>
+                    <li>Supervised both design office and site operations for an extensive portfolio of residential projects across the West Bank.</li>
+                    <li>Successfully delivered key concurrent assignments:
+                        <ul>
+                            <li>Awkaf Commercial Building (5,000 m²) – Supervisor Engineer</li>
+                            <li>Alrayhan Yard (14 Villas for JAWWAL) – Inspector</li>
+                            <li>Rawda 2 Residential Building – Civil Engineer</li>
+                        </ul>
+                    </li>
+                    <li>Ensured consistent quality standards and effective coordination between design, construction, and client requirements.</li>
                 </ul>
             </div>
-        </div>
 
-        <div class="section">
-            <h2>Education</h2>
-            <p><strong>Bachelor in Civil Engineering</strong><br>
-            October 6 University, Egypt | 2005 – 2010</p>
-            <p><strong>Digital Master of MBA in Artificial Intelligence</strong><br>
-            TAG-GU | 2024 – 2026</p>
-        </div>
-
-        <div class="section">
-            <h2>Languages</h2>
-            <p><strong>Arabic:</strong> Mother Tongue<br>
-            <strong>English:</strong> Advanced (Professional Working Proficiency)</p>
-        </div>
-
-
-
-        
-        <div class="section">
-            <h2>Project & MEAL Toolkit</h2>
-            <div class="toolkit">
-                <div><strong>Logic Models:</strong> Theory of Change, Results Frameworks, Logical Framework</div>
-                <div><strong>MEAL Planning:</strong> Performance Management Plans, Indicator Performance Tracking Tables</div>
-                <div><strong>Data Analysis:</strong> Power BI and Excel for data visualization and analysis</div>
-                <div><strong>Stakeholder Management:</strong> RACI Matrix, Influence/Interest Grid</div>
+            <div class="job">
+                <div class="job-title">Site Engineer</div>
+                <div class="job-meta">Al-Eswed Company | Palestine | 2015 – 2016</div>
+                <ul>
+                    <li>Served as Contractor Engineer on the Saudi-funded Qalandia 7 Shelters Reconstruction project, contributing to the rehabilitation of shelters for vulnerable populations.</li>
+                </ul>
             </div>
-        </div>
-    </div>
-</body>
-</html>
+
+            <div class="job">
+                <div class="job-title">Technical Civil Engineer</div>
+                <div class="job-meta">Al-Harameen Consultant Office | Palestine | 2010 – 2015</div>
+                <ul>
+                    <li>Developed comprehensive technical expertise through progressive responsibility in design and site supervision.</li>
+                    <li>Delivered key contributions on projects including:
+                        <ul>
+                            <li>Awkaf Commercial Building (1,700 m²) – Site Engineer</li>
+                            <li>Europe Hospital Maintenance – Site Engineer (specialized finishing works)</li>
+                            <li>Ayed Basheeti Street (1,000 m road + infrastructure) – Site Engineer (7-month
